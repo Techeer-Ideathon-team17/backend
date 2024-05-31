@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend
+    command: >
+      sh -c "python manage.py makemigrations &&
+             python manage.py migrate &&
+             daphne -b 0.0.0.0 -p 8000 config.asgi:application"
+    volumes:
+      - ./config/logs/:/backend/logs/
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+    restart: always
+    tty: true
+    networks:
+      - haru
+
+networks:
+  haru:
+    driver: bridge
+
+volumes:
+  build_folder: {}
+  db_data: {}
+#
+#             python manage.py makemigrations member &&
+#             python manage.py makemigrations harucalendar &&
+#             python manage.py makemigrations diary &&
+#             python manage.py makemigrations guest &&
+#             python manage.py makemigrations static &&

@@ -1,0 +1,14 @@
+pip==23.3.2
+setuptools==69.0.3
+daphne==4.0.0
+Django==5.0.1
+channels==4.0.0
+django-cors-headers==4.3.1
+django-environ==0.11.2
+djangorestframework==3.14.0
+drf-yasg==1.21.7
+asgiref==3.7.2
+wheel==0.42.0
+django-storages==1.14.2
+openai==1.7.1
+requests==2.31.0
