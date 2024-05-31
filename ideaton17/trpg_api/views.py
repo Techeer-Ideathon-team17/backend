@@ -57,3 +57,11 @@ def trpg(request):
 
     # return render(request, 'trpg_api/index.html', {'response': response_text})
     return JsonResponse({'response_text': response_text}, safe=False)
+
+def start_chat(request):
+    if request.method == 'GET':
+        response = trpg(request)
+        return JsonResponse({'response':response.content.decode('utf-8')}, safe=False)
+
+def render_start_page(request):
+    return render(request, 'start.html') # 처음 화면 파일 넣으시오
